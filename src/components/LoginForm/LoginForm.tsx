@@ -1,4 +1,4 @@
-import { useState, FormEventHandler, useRef } from 'react';
+import { useState, FormEventHandler, useRef, useEffect } from 'react';
 import Confetti from 'react-confetti';
 
 import { User } from '../../types/User';
@@ -14,6 +14,12 @@ const LoginForm = ({ data, onSubmit }: Props) => {
   const languageFieldRef = useRef<HTMLInputElement>(null);
 
   const [showConfetti, setShowConfetti] = useState(false);
+
+  useEffect(() => {
+    if (emailFieldRef.current) {
+      emailFieldRef.current.focus();
+    }
+  }, []);
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
