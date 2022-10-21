@@ -1,3 +1,3 @@
-export * from './Text';
-export * from './MagicButton';
-export * from './Input';
+export * from './atoms';
+// export * from './molecules';
+// export * from './organisms';

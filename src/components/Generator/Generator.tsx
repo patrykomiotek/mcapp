@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { MouseEventHandler, useState } from 'react';
 
-import { Text } from '../../ui';
+import { Text } from '../../ui/atoms';
 
 const Generator = () => {
   const [id, setId] = useState(uuidv4());

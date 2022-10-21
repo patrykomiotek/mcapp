@@ -2,7 +2,7 @@ import { useState, FormEventHandler, useRef, useEffect } from 'react';
 import Confetti from 'react-confetti';
 
 import { User } from '../../types/User';
-import { Input } from '../../ui';
+import { Input } from '../../ui/atoms';
 
 type Props = {
   data?: User,
