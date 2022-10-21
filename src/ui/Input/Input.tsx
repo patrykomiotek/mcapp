@@ -1,12 +1,9 @@
-import { forwardRef, InputHTMLAttributes } from 'react';
-import type { Ref } from 'react';
+import { forwardRef } from 'react';
+import type { Ref, ComponentPropsWithRef } from 'react';
 
-type Props = {
-  readonly id: string;
-  readonly label: string;
-  readonly type?: "text" | "email" | "password" | "number";
-  readonly value?: string;
-} & InputHTMLAttributes<HTMLInputElement>
+interface Props extends ComponentPropsWithRef<'input'> {
+  label: string;
+}
 
 const Input = forwardRef((
   {
