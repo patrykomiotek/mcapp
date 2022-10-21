@@ -1,2 +1,2 @@
-export { Generator } from './Generator';
-export { LoginForm, LoginFormControlled } from './LoginForm';
+export * from './Generator';
+export * from './LoginForm';
