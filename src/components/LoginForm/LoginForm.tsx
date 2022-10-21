@@ -11,6 +11,7 @@ type User = typeof defaultUser;
 
 const LoginForm = () => {
   const [user, setUser] = useState<User>(defaultUser);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   // const [email, setEmail] = useState('');
   // const [password, setPassword] = useState('');
@@ -31,9 +32,23 @@ const LoginForm = () => {
 
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     // console.log('id:', event.target.id, ', value: ', event.target.value);
+
+    const fieldId = event.target.id;
+    let fieldValue = event.target.value;
+
+    if (fieldValue.includes('kura')) {
+      fieldValue = '****';
+    }
+
+    if (fieldId === 'language' && fieldValue === 'php') {
+      setShowConfetti(true);
+    } else {
+      setShowConfetti(false);
+    }
+
     setUser({
       ...user,
-      [event.target.id]: event.target.value,
+      [fieldId]: fieldValue,
     });
   }
 
@@ -54,7 +69,7 @@ const LoginForm = () => {
           <input id="language" type="text" onChange={handleInputChange} value={user.language} />
         </div>
         {/* {user.language.toLowerCase() === 'php' ?? <Confetti width={1000} height={600} />} */}
-        {user.language.toLowerCase() === 'php' && <Confetti width={1000} height={600} />}
+        {showConfetti && <Confetti width={1000} height={600} />}
         <div>
           <input type="submit" value="Send" />
         </div>
