@@ -1,6 +1,8 @@
 import { forwardRef } from 'react';
 import type { Ref, ComponentPropsWithRef } from 'react';
 
+import './Input.css';
+
 interface Props extends ComponentPropsWithRef<'input'> {
   label: string;
 }
