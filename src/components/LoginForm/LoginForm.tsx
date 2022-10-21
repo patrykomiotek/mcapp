@@ -1,15 +1,14 @@
-import { ChangeEventHandler, useState, useEffect, FormEventHandler, useRef } from 'react';
+import { useState, FormEventHandler, useRef } from 'react';
 import Confetti from 'react-confetti';
 
-const defaultUser = {
-  email: '',
-  password: '',
-  language: '',
-};
+import { User } from '../../types/User';
 
-type User = typeof defaultUser;
+type Props = {
+  data?: User,
+  onSubmit: (values: User) => void,
+}
 
-const LoginForm = () => {
+const LoginForm = ({ data, onSubmit }: Props) => {
   const emailFieldRef = useRef<HTMLInputElement>(null);
   const passwordFieldRef = useRef<HTMLInputElement>(null);
   const languageFieldRef = useRef<HTMLInputElement>(null);
@@ -25,6 +24,8 @@ const LoginForm = () => {
 
     console.log(email, password, language);
     setShowConfetti(true);
+
+    onSubmit({email, password, language});
   }
 
   return (
@@ -35,15 +36,15 @@ const LoginForm = () => {
         </div>
         <div>
           <label htmlFor="email">E-mail</label>
-          <input id="email" ref={emailFieldRef} onChange={() => null} type="text" defaultValue="test@example.com" />
+          <input id="email" ref={emailFieldRef} onChange={() => null} type="text" defaultValue={data?.email} />
         </div>
         <div>
           <label htmlFor="password">Password</label>
-          <input id="password" ref={passwordFieldRef} type="password" />
+          <input id="password" ref={passwordFieldRef} type="password" defaultValue={data?.password} />
         </div>
         <div>
           <label htmlFor="language">Language</label>
-          <input id="language" ref={languageFieldRef} type="text" />
+          <input id="language" ref={languageFieldRef} type="text" defaultValue={data?.language} />
         </div>
         {/* {user.language.toLowerCase() === 'php' ?? <Confetti width={1000} height={600} />} */}
         {showConfetti && <Confetti width={1000} height={600} />}
