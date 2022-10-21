@@ -1,37 +1,41 @@
-import { MouseEventHandler, useEffect, useRef } from "react";
+import { forwardRef } from 'react';
+import type { MouseEventHandler, Ref } from "react";
 
 type Props = {
   children: string;
+  onMouseEnter: MouseEventHandler<HTMLButtonElement>
 }
 
-const MagicButton = ({ children }: Props) => {
-  const buttonRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    const button = buttonRef.current
-    if (button) {
-      button.style.backgroundColor = 'red';
-      button.style.color = 'white';
-    }
-  }, []);
-
-  const handleMouseEnter: MouseEventHandler<HTMLButtonElement> = () => {
-    const button = buttonRef.current
-    if (button) {
-      button.style.backgroundColor = 'green';
-      button.style.color = 'white';
-    }
-  }
+// forwardRef((props, ref) => Component)
+// const MagicButton = forwardRef<HTMLButtonElement, Props>((
+const MagicButton = forwardRef((
+  { onMouseEnter, children }: Props,
+  ref: Ref<HTMLButtonElement>,
+) => {
 
   return (
     <button
-      ref={buttonRef}
+      ref={ref}
       style={{ backgroundColor: 'blue' }}
-      onMouseEnter={handleMouseEnter}
+      onMouseEnter={onMouseEnter}
     >
-        {children}
+      {children}
     </button>
   );
-}
+
+});
+
+// ({onMouseEnter, children }: Props) => {
+
+//   return (
+//     <button
+//       ref={buttonRef}
+//       style={{ backgroundColor: 'blue' }}
+//       onMouseEnter={onMouseEnter}
+//     >
+//         {children}
+//     </button>
+//   );
+// }
 
 export { MagicButton };
