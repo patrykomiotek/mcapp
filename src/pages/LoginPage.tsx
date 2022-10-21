@@ -1,6 +1,6 @@
-import { LoginForm } from '../components';
+import { LoginForm } from '@components/LoginForm';
 
-import { User } from '../types/User';
+import { User } from '@apptypes/User';
 
 const defaultUser: User = {
   email: 'test@example.com',

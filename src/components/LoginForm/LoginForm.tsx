@@ -1,8 +1,8 @@
 import { useState, FormEventHandler, useRef, useEffect } from 'react';
 import Confetti from 'react-confetti';
 
-import { User } from '../../types/User';
-import { Input } from '../../ui/atoms';
+import { User } from '@apptypes/User';
+import { Input } from '@atoms/Input';
 
 type Props = {
   data?: User,

@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@hooks/*": ["hooks/*"],
+      "@pages/*": ["pages/*"],
+      "@services/*": ["services/*"],
+      "@stories/*": ["stories/*"],
+      "@apptypes/*": ["types/*"],
+      "@utils/*": ["utils/*"],
+      "@atoms/*": ["ui/atoms/*"],
+      "@molecules/*": ["ui/molecules/*"],
+      "@organisms/*": ["ui/organisms/*"],
+    }
+  }
+}
