@@ -1,4 +1,5 @@
 import { ChangeEventHandler, useState } from 'react';
+import Confetti from 'react-confetti';
 
 const defaultUser = {
   email: '',
@@ -52,8 +53,10 @@ const LoginForm = () => {
           <label htmlFor="language">Language</label>
           <input id="language" type="text" onChange={handleInputChange} value={user.language} />
         </div>
+        {/* {user.language.toLowerCase() === 'php' ?? <Confetti width={1000} height={600} />} */}
+        {user.language.toLowerCase() === 'php' && <Confetti width={1000} height={600} />}
         <div>
-          <input type="submit" />
+          <input type="submit" value="Send" />
         </div>
       </form>
     </div>
