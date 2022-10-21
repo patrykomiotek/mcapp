@@ -1,6 +1,7 @@
 import './App.css';
 import { Text } from './ui';
 import { Generator } from './components';
+// import { LoginFormControlled } from './components';
 import { LoginForm } from './components';
 
 const App = () => {
