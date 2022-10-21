@@ -2,6 +2,7 @@ import { useState, FormEventHandler, useRef, useEffect } from 'react';
 import Confetti from 'react-confetti';
 
 import { User } from '../../types/User';
+import { Input } from '../../ui';
 
 type Props = {
   data?: User,
@@ -40,10 +41,12 @@ const LoginForm = ({ data, onSubmit }: Props) => {
         <div>
           {/* <p>E-mail: {emailFieldRef.current?.value} password: {passwordFieldRef.current?.value} language: {languageFieldRef.current?.value}</p> */}
         </div>
-        <div>
-          <label htmlFor="email">E-mail</label>
-          <input id="email" ref={emailFieldRef} onChange={() => null} type="text" defaultValue={data?.email} />
-        </div>
+        <Input
+          ref={emailFieldRef}
+          id="email"
+          label="E-mail"
+          style={{ backgroundColor: 'yellow' }}
+        />
         <div>
           <label htmlFor="password">Password</label>
           <input id="password" ref={passwordFieldRef} type="password" defaultValue={data?.password} />

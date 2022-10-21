@@ -33,13 +33,13 @@ const App = () => {
       {/* <Text>Today is payday</Text> */}
       {/* <Generator /> */}
       {/* <LoginForm /> */}
-      {/* <LoginPage /> */}
-      <MagicButton
+      <LoginPage />
+      {/* <MagicButton
         ref={buttonRef}
         onMouseEnter={handleMouseEnter}
       >
         Click me, please!
-      </MagicButton>
+      </MagicButton> */}
     </div>
   );
 }
