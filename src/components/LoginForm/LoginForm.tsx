@@ -1,4 +1,4 @@
-import { ChangeEventHandler, useState, useEffect } from 'react';
+import { ChangeEventHandler, useState, useEffect, FormEventHandler } from 'react';
 import Confetti from 'react-confetti';
 
 const defaultUser = {
@@ -60,9 +60,14 @@ const LoginForm = () => {
     });
   }
 
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
+    event.preventDefault();
+    console.log('data: ', user);
+  }
+
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div><p>E-mail: {user.email} password: {user.password} language: {user.language}</p></div>
         <div>
           <label htmlFor="email">E-mail</label>
