@@ -1,4 +1,4 @@
-import { ChangeEventHandler, useState } from 'react';
+import { ChangeEventHandler, useState, useEffect } from 'react';
 import Confetti from 'react-confetti';
 
 const defaultUser = {
@@ -12,6 +12,24 @@ type User = typeof defaultUser;
 const LoginForm = () => {
   const [user, setUser] = useState<User>(defaultUser);
   const [showConfetti, setShowConfetti] = useState(false);
+
+  useEffect(() => {
+    const language = user.language;
+
+    if (language.includes('kura')) {
+      setUser({
+        ...user,
+        language: '****',
+      });
+    }
+
+    if (language === 'php') {
+      setShowConfetti(true);
+    } else {
+      setShowConfetti(false);
+    }
+  // eslint-disable-next-line
+  }, [user.language]);
 
   // const [email, setEmail] = useState('');
   // const [password, setPassword] = useState('');
@@ -35,16 +53,6 @@ const LoginForm = () => {
 
     const fieldId = event.target.id;
     let fieldValue = event.target.value;
-
-    if (fieldValue.includes('kura')) {
-      fieldValue = '****';
-    }
-
-    if (fieldId === 'language' && fieldValue === 'php') {
-      setShowConfetti(true);
-    } else {
-      setShowConfetti(false);
-    }
 
     setUser({
       ...user,
