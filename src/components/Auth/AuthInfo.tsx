@@ -4,20 +4,18 @@ import { AuthCredentials } from './AuthCredentials';
 // import { AuthContext } from './AuthContext';
 // import { useAuth } from './AuthContext';
 import { useAuthContext } from './AuthContext';
+import { render } from '@testing-library/react';
 
 const AuthInfo = () => {
   // const { toggle } = useAuth();
   // const context = useContext(AuthContext);
-  const context = useAuthContext();
+  // const context = useAuthContext();
 
-  const handleClick = () => {
-    context.toggle();
-  }
+  console.log('AuthInfo component');
 
   return (
     <div>
       <AuthCredentials />
-      <button onClick={handleClick}>Toggle</button>
     </div>
   );
 }

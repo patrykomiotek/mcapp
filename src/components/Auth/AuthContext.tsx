@@ -17,6 +17,7 @@ AuthContext.displayName = 'AuthContext';
 
 const useAuth = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [state, dispatch] = useReducer(false);
 
   const logIn = () => setIsLoggedIn(true);
 
