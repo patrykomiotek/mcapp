@@ -6,8 +6,10 @@ interface ProductsResponse {
   records: Product[]
 }
 
+export const BASE_URL = 'https://api.airtable.com/v0/appdpf7By5zmgmYOI';
+
 const api = axios.create({
-  baseURL: 'https://api.airtable.com/v0/appdpf7By5zmgmYOI',
+  baseURL: BASE_URL,
   headers: {
     Authorization: `Bearer ${process.env.REACT_APP_API_TOKEN}`,
   }

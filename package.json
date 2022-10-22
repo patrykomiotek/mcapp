@@ -39,6 +39,8 @@
     "@types/uuid": "^8.3.4",
     "babel-plugin-named-exports-order": "^0.0.2",
     "chromatic": "^6.10.5",
+    "msw": "^0.47.4",
+    "msw-storybook-addon": "^1.6.3",
     "prop-types": "^15.8.1",
     "webpack": "^5.74.0"
   },
@@ -49,7 +51,8 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "chromatic": "npx chromatic --project-token=4f290294712d"
+    "chromatic": "npx chromatic --project-token=4f290294712d",
+    "msw:update": "npx msw init public --no-save"
   },
   "eslintConfig": {
     "extends": [
