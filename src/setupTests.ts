@@ -6,9 +6,14 @@
 import '@testing-library/jest-dom/extend-expect';
 import { server } from './mocks/server';
 
+/**
+ * beforeAll, afterEach and afterAll can be moved to separate test suite to manipulate responses
+ */
 beforeAll(() => {
   // Enable the mocking in tests.
-  server.listen();
+  server.listen({
+    onUnhandledRequest: 'error',
+  });
 })
 
 afterEach(() => {
