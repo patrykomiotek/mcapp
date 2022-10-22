@@ -4,6 +4,7 @@ import { rest } from 'msw';
 
 import { Product } from './Product';
 import { BASE_URL } from '@services/products';
+import { Product as IProduct } from '@apptypes/Product';
 
 export default {
   title: 'App/Products/Product',
@@ -18,7 +19,7 @@ export const _Product = () => (
 _Product.parameters = {
   msw: {
     handlers: [
-      rest.get(`${BASE_URL}/products/recOeguiOUiOyViJs`, (_req, res, ctx) => {
+      rest.get<never, never, IProduct>(`${BASE_URL}/products/recOeguiOUiOyViJs`, async (_req, res, ctx) => {
         return res(
           ctx.status(200),
           ctx.json({
@@ -45,7 +46,7 @@ export const _ProductFailedResponse = () => (
 _ProductFailedResponse.parameters = {
   msw: {
     handlers: [
-      rest.get(`${BASE_URL}/products/recOeguiOUiOyViJs`, (_req, res, ctx) => {
+      rest.get(`${BASE_URL}/products/recOeguiOUiOyViJs`, async (_req, res, ctx) => {
         return res(
           ctx.status(200),
           ctx.json({
@@ -64,7 +65,7 @@ export const _ProductFailedResponse500 = () => (
 _ProductFailedResponse500.parameters = {
   msw: {
     handlers: [
-      rest.get(`${BASE_URL}/products/recOeguiOUiOyViJs`, (_req, res, ctx) => {
+      rest.get(`${BASE_URL}/products/recOeguiOUiOyViJs`, async (_req, res, ctx) => {
         return res(
           ctx.status(500),
           ctx.json({}),
@@ -81,7 +82,7 @@ export const _ProductFailedLongLoading = () => (
 _ProductFailedLongLoading.parameters = {
   msw: {
     handlers: [
-      rest.get(`${BASE_URL}/products/recOeguiOUiOyViJs`, (_req, res, ctx) => {
+      rest.get<never, never, IProduct>(`${BASE_URL}/products/recOeguiOUiOyViJs`, async (_req, res, ctx) => {
         return res(
           ctx.delay(10000),
           ctx.status(200),

@@ -8,15 +8,15 @@ interface Body {
 
 export const handlers = [
 
-  rest.get<Body>(`${BASE_URL}/products/recOeguiOUiOyViJs`, (_req, res, ctx) => {
+  rest.get<never, never, Product>(`${BASE_URL}/products/recOeguiOUiOyViJs`, async (_req, res, ctx) => {
 
     return res(
       ctx.status(200),
       ctx.json({
         id: '123',
         fields: {
-          product_key: 'dfg',
           name: 'Product 500',
+          product_key: 'dfg',
           description: 'Lorem ipsum',
           price: 456,
           created_at: '123',
