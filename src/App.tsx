@@ -8,6 +8,7 @@ import { Generator } from './components';
 import { LoginForm } from './components';
 import { LoginPage } from './pages';
 import { MagicButton } from './ui';
+import { Viewport } from '@components/Viewport'
 
 const App = () => {
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -33,7 +34,8 @@ const App = () => {
       {/* <Text>Today is payday</Text> */}
       {/* <Generator /> */}
       {/* <LoginForm /> */}
-      <LoginPage />
+      {/* <LoginPage /> */}
+      <Viewport />
       {/* <MagicButton
         ref={buttonRef}
         onMouseEnter={handleMouseEnter}
