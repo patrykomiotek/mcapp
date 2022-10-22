@@ -1,29 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 
-import { Product as IProduct } from '@apptypes/Product';
 import { fetchProduct } from '@services/products';
 
 const Product = () => {
-  const [product, setProduct] = useState<IProduct | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  const fetchData = async () => {
-    try {
-      const response  = await fetchProduct('recOeguiOUiOyViJs');
-
-      console.log(response);
-      setProduct(response.data);
-    } catch (_e) {
-      setIsError(true);
-    } finally {
-      setIsLoading(false);
-    }
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const { isLoading, isError, data: response, refetch } = useQuery(
+    ['product/recOeguiOUiOyViJs'],
+    () => fetchProduct('recOeguiOUiOyViJs')
+  );
+  const product = response?.data;
 
   if (isLoading) {
     return <p>Loading...</p>
@@ -37,6 +21,7 @@ const Product = () => {
     <div>
       <h2>{product?.fields.name}</h2>
       <p>{product?.fields.price}</p>
+      <button onClick={() => refetch()}>Refresh</button>
     </div>
   );
 }

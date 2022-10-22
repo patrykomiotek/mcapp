@@ -1,6 +1,8 @@
 import './App.css';
 import { useRef, useEffect, useState } from 'react';
 import type { MouseEventHandler } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import { Text } from './ui';
 import { Generator } from './components';
@@ -14,6 +16,9 @@ import { AuthInfo } from '@components/Auth';
 import { AuthProvider } from '@components/Auth';
 import { ThemeProvider } from '@components/Theme';
 import { Products } from '@components/Products';
+import { Product } from '@components/Products';
+
+const queryClient = new QueryClient();
 
 const App = () => {
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -39,23 +44,26 @@ const App = () => {
   return (
     <AuthProvider>
       <ThemeProvider>
-        <div className="App">
-          {/* <Text>Today is payday</Text> */}
-          {/* <Generator /> */}
-          {/* <LoginForm /> */}
-          {/* <LoginPage /> */}
-          {/* <Viewport /> */}
-          {/* <MagicButton
-            ref={buttonRef}
-            onMouseEnter={handleMouseEnter}
-          >
-            Click me, please!
-          </MagicButton> */}
-          {/* <AuthInfo /> */}
-          {/* <button onClick={() => setIsLoggedIn((value) => !value)}>Toggle</button> */}
+        <QueryClientProvider client={queryClient}>
+          <div className="App">
+            {/* <Text>Today is payday</Text> */}
+            {/* <Generator /> */}
+            {/* <LoginForm /> */}
+            {/* <LoginPage /> */}
+            {/* <Viewport /> */}
+            {/* <MagicButton
+              ref={buttonRef}
+              onMouseEnter={handleMouseEnter}
+            >
+              Click me, please!
+            </MagicButton> */}
+            {/* <AuthInfo /> */}
+            {/* <button onClick={() => setIsLoggedIn((value) => !value)}>Toggle</button> */}
 
-          <Products />
-        </div>
+            <Product />
+          </div>
+          <ReactQueryDevtools initialIsOpen={true} />
+        </QueryClientProvider>
       </ThemeProvider>
     </AuthProvider>
   );
