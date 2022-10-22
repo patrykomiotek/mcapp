@@ -48,6 +48,14 @@ const AuthProvider = ({ children }: Props) => {
   );
 }
 
-const useAuthContext = () => useContext(AuthContext);
+const useAuthContext = () => {
+  const context = useContext(AuthContext);
+
+  if (!context) {
+    throw new Error('Oh no! You need to wrap component by AuthProvider');
+  }
+
+  return context;
+}
 
 export { AuthProvider, AuthContext, useAuthContext };
