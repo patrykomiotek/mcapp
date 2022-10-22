@@ -4,12 +4,14 @@ const Counter = () => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
+    // mounting or updating
 
     const intervalId = setInterval(() => {
       setCount((current) => current + 1);
     }, 1000);
 
     return () => {
+      // unmount
       clearInterval(intervalId);
     }
 

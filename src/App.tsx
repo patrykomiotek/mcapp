@@ -8,7 +8,9 @@ import { Generator } from './components';
 import { LoginForm } from './components';
 import { LoginPage } from './pages';
 import { MagicButton } from './ui';
-import { Viewport } from '@components/Viewport'
+import { Viewport } from '@components/Viewport';
+import { AuthInfo } from '@components/Auth';
+import { AuthContext } from '@components/Auth';
 
 const App = () => {
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -30,19 +32,22 @@ const App = () => {
   }
 
   return (
-    <div className="App">
-      {/* <Text>Today is payday</Text> */}
-      {/* <Generator /> */}
-      {/* <LoginForm /> */}
-      {/* <LoginPage /> */}
-      <Viewport />
-      {/* <MagicButton
-        ref={buttonRef}
-        onMouseEnter={handleMouseEnter}
-      >
-        Click me, please!
-      </MagicButton> */}
-    </div>
+    <AuthContext.Provider value={{ isLoggedIn: false }}>
+      <div className="App">
+        {/* <Text>Today is payday</Text> */}
+        {/* <Generator /> */}
+        {/* <LoginForm /> */}
+        {/* <LoginPage /> */}
+        {/* <Viewport /> */}
+        {/* <MagicButton
+          ref={buttonRef}
+          onMouseEnter={handleMouseEnter}
+        >
+          Click me, please!
+        </MagicButton> */}
+        <AuthInfo />
+      </div>
+    </AuthContext.Provider>
   );
 }
 
