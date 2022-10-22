@@ -11,9 +11,7 @@ const AuthInfo = () => {
   const context = useAuthContext();
 
   const handleClick = () => {
-    if (context) {
-      context.toggle();
-    }
+    context.toggle();
   }
 
   return (
