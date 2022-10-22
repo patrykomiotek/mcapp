@@ -1,19 +1,29 @@
 import { ComponentMeta } from '@storybook/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { rest } from 'msw';
+import { MemoryRouter, Routes, Route } from 'react-router-dom';
 
 import { Product } from './Product';
 import { BASE_URL } from '@services/products';
 import { Product as IProduct } from '@apptypes/Product';
 
+const productId = 'recOeguiOUiOyViJs';
+
 export default {
   title: 'App/Products/Product',
+  decorators: [(Story) => (
+    <MemoryRouter initialEntries={[`/products/${productId}`]}>
+      <Routes>
+        <Route path="/products/:id" element={<Story />} />
+      </Routes>
+    </MemoryRouter>
+  )],
 } as ComponentMeta<typeof Product>;
 
 const queryClient = new QueryClient();
 
 export const _Product = () => (
-  <QueryClientProvider client={queryClient}><Product /></QueryClientProvider>
+  <QueryClientProvider client={queryClient}><Product productId={productId} /></QueryClientProvider>
 );
 
 _Product.parameters = {
@@ -40,7 +50,7 @@ _Product.parameters = {
 }
 
 export const _ProductFailedResponse = () => (
-  <QueryClientProvider client={queryClient}><Product /></QueryClientProvider>
+  <QueryClientProvider client={queryClient}><Product productId={productId} /></QueryClientProvider>
 );
 
 _ProductFailedResponse.parameters = {
@@ -59,7 +69,7 @@ _ProductFailedResponse.parameters = {
 }
 
 export const _ProductFailedResponse500 = () => (
-  <QueryClientProvider client={queryClient}><Product /></QueryClientProvider>
+  <QueryClientProvider client={queryClient}><Product productId={productId} /></QueryClientProvider>
 );
 
 _ProductFailedResponse500.parameters = {
@@ -76,7 +86,7 @@ _ProductFailedResponse500.parameters = {
 }
 
 export const _ProductFailedLongLoading = () => (
-  <QueryClientProvider client={queryClient}><Product /></QueryClientProvider>
+  <QueryClientProvider client={queryClient}><Product productId={productId} /></QueryClientProvider>
 );
 
 _ProductFailedLongLoading.parameters = {

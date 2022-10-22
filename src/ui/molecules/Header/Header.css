@@ -1,0 +1,8 @@
+header ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+header hr {
+  margin-bottom: 10px;
+}

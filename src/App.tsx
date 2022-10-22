@@ -1,67 +1,39 @@
 import './App.css';
-import { useRef, useEffect, useState } from 'react';
-import type { MouseEventHandler } from 'react';
+
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
-import { Text } from './ui';
-import { Generator } from './components';
-// import { LoginFormControlled } from './components';
-import { LoginForm } from './components';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import { GeneratorPage } from './pages';
 import { LoginPage } from './pages';
-import { MagicButton } from './ui';
-import { Viewport } from '@components/Viewport';
-import { AuthInfo } from '@components/Auth';
-// import { AuthContext } from '@components/Auth';
+import { AuthInfoPage } from '@pages/AuthInfoPage';
 import { AuthProvider } from '@components/Auth';
 import { ThemeProvider } from '@components/Theme';
-import { Products } from '@components/Products';
-import { Product } from '@components/Products';
+import { ProductsPage } from '@pages/ProductsPage';
+import { ProductPage } from '@pages/ProductPage';
+import { Footer } from '@atoms/Footer';
+import { Header } from '@molecules/Header';
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const { isLoggedIn } = useAuth();
-
-  useEffect(() => {
-    const button = buttonRef.current
-    if (button) {
-      button.style.backgroundColor = 'red';
-      button.style.color = 'white';
-    }
-  }, []);
-
-  const handleMouseEnter: MouseEventHandler<HTMLButtonElement> = () => {
-    const button = buttonRef.current
-    if (button) {
-      button.style.backgroundColor = 'green';
-      button.style.color = 'white';
-    }
-  }
-
   return (
     <AuthProvider>
       <ThemeProvider>
         <QueryClientProvider client={queryClient}>
-          <div className="App">
-            {/* <Text>Today is payday</Text> */}
-            {/* <Generator /> */}
-            {/* <LoginForm /> */}
-            {/* <LoginPage /> */}
-            {/* <Viewport /> */}
-            {/* <MagicButton
-              ref={buttonRef}
-              onMouseEnter={handleMouseEnter}
-            >
-              Click me, please!
-            </MagicButton> */}
-            {/* <AuthInfo /> */}
-            {/* <button onClick={() => setIsLoggedIn((value) => !value)}>Toggle</button> */}
-
-            <Product />
-          </div>
+          <Router>
+            <Header />
+            <Routes>
+              <Route path="/" element={<LoginPage />} />
+              <Route path="/generator" element={<GeneratorPage />} />
+              <Route path="/auth-info" element={<AuthInfoPage />} />
+              <Route path="/products/:id" element={<ProductPage />} />
+              <Route path="/products" element={<ProductsPage />} />
+              <Route path="/login" element={<LoginPage />} />
+            </Routes>
+            <Footer />
+          </Router>
           <ReactQueryDevtools initialIsOpen={true} />
         </QueryClientProvider>
       </ThemeProvider>

@@ -3,16 +3,20 @@ import { useQuery } from '@tanstack/react-query';
 
 import { fetchProduct, updatePriceByOne } from '@services/products';
 
-const Product = () => {
+type Props = {
+  productId: string;
+}
+
+const Product = ({ productId }: Props) => {
   const { isLoading, isError, data: response, refetch } = useQuery(
-    ['product/recOeguiOUiOyViJs'],
-    () => fetchProduct('recOeguiOUiOyViJs')
+    ['product', productId],
+    () => fetchProduct(productId)
   );
 
   const product = response?.data;
 
   const handleUpdatePrice: MouseEventHandler<HTMLButtonElement> = () => {
-    updatePriceByOne('recOeguiOUiOyViJs');
+    updatePriceByOne(productId);
     refetch();
   }
 
