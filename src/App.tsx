@@ -10,7 +10,7 @@ import { LoginPage } from './pages';
 import { MagicButton } from './ui';
 import { Viewport } from '@components/Viewport';
 import { AuthInfo } from '@components/Auth';
-import { AuthContext } from '@components/Auth';
+// import { AuthContext } from '@components/Auth';
 import { AuthProvider } from '@components/Auth';
 import { ThemeProvider } from '@components/Theme';
 
