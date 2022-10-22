@@ -1,3 +1,3 @@
 export { AuthCredentials } from './AuthCredentials';
 export { AuthInfo } from './AuthInfo';
-export * from './AuthContext';
+export { AuthContext, AuthProvider, useAuthContext } from './AuthContext';
