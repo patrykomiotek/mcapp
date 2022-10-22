@@ -3,6 +3,7 @@ import Confetti from 'react-confetti';
 
 import { User } from '@apptypes/User';
 import { Input } from '@atoms/Input';
+import { useViewport } from '@hooks/useViewport';
 
 type Props = {
   data?: User,
@@ -10,6 +11,7 @@ type Props = {
 }
 
 const LoginForm = ({ data, onSubmit }: Props) => {
+  const size = useViewport();
   const emailFieldRef = useRef<HTMLInputElement>(null);
   const passwordFieldRef = useRef<HTMLInputElement>(null);
   const languageFieldRef = useRef<HTMLInputElement>(null);
@@ -56,7 +58,7 @@ const LoginForm = ({ data, onSubmit }: Props) => {
           <input id="language" ref={languageFieldRef} type="text" defaultValue={data?.language} />
         </div>
         {/* {user.language.toLowerCase() === 'php' ?? <Confetti width={1000} height={600} />} */}
-        {showConfetti && <Confetti width={1000} height={600} />}
+        {showConfetti && <Confetti width={size.x} height={size.y} />}
         <div>
           <input type="submit" value="Send" />
         </div>
