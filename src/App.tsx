@@ -13,6 +13,7 @@ import { AuthInfo } from '@components/Auth';
 // import { AuthContext } from '@components/Auth';
 import { AuthProvider } from '@components/Auth';
 import { ThemeProvider } from '@components/Theme';
+import { Products } from '@components/Products';
 
 const App = () => {
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -40,7 +41,7 @@ const App = () => {
       <ThemeProvider>
         <div className="App">
           {/* <Text>Today is payday</Text> */}
-          <Generator />
+          {/* <Generator /> */}
           {/* <LoginForm /> */}
           {/* <LoginPage /> */}
           {/* <Viewport /> */}
@@ -50,8 +51,10 @@ const App = () => {
           >
             Click me, please!
           </MagicButton> */}
-          <AuthInfo />
+          {/* <AuthInfo /> */}
           {/* <button onClick={() => setIsLoggedIn((value) => !value)}>Toggle</button> */}
+
+          <Products />
         </div>
       </ThemeProvider>
     </AuthProvider>
