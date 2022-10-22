@@ -1,5 +1,5 @@
 import './App.css';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import type { MouseEventHandler } from 'react';
 
 import { Text } from './ui';
@@ -14,6 +14,7 @@ import { AuthContext } from '@components/Auth';
 
 const App = () => {
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const button = buttonRef.current
@@ -32,7 +33,7 @@ const App = () => {
   }
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn: false }}>
+    <AuthContext.Provider value={{ isLoggedIn: isLoggedIn }}>
       <div className="App">
         {/* <Text>Today is payday</Text> */}
         {/* <Generator /> */}
@@ -46,6 +47,7 @@ const App = () => {
           Click me, please!
         </MagicButton> */}
         <AuthInfo />
+        <button onClick={() => setIsLoggedIn((value) => !value)}>Toggle</button>
       </div>
     </AuthContext.Provider>
   );
