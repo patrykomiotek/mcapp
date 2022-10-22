@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react';
+import { useState, createContext, useContext } from 'react';
 
 type Auth = {
   isLoggedIn: boolean;
@@ -48,4 +48,6 @@ const AuthProvider = ({ children }: Props) => {
   );
 }
 
-export { AuthProvider, AuthContext };
+const useAuthContext = () => useContext(AuthContext);
+
+export { AuthProvider, AuthContext, useAuthContext };
