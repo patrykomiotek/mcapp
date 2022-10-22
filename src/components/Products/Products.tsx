@@ -18,21 +18,37 @@ interface ProductsResponse {
 
 const Products = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   const fetchData = async () => {
-    const response  = await axios.get<ProductsResponse>('https://api.airtable.com/v0/appdpf7By5zmgmYOI/products', {
-      headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_API_TOKEN}`,
-      }
-    });
+    try {
+      const response  = await axios.get<ProductsResponse>('https://api.airtable.com/v0/appdpf7By5zmgmYOI/products', {
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_API_TOKEN}`,
+        }
+      });
 
-    console.log(response);
-    setProducts(response.data.records);
+      console.log(response);
+      setProducts(response.data.records);
+    } catch (_e) {
+      setIsError(true);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  if (isLoading) {
+    return <p>Loading...</p>
+  }
+
+  if (isError) {
+    return <p>Oh no! An error has occured</p>
+  }
 
   return (
     <div>
