@@ -1,6 +1,7 @@
 import { ComponentMeta } from '@storybook/react';
 
 import { Generator } from './Generator';
+import { ThemeProvider } from '@components/Theme';
 
 export default {
   title: 'App/Generator',
@@ -8,6 +9,6 @@ export default {
 
 
 export const _Generator = () => (
-  <Generator />
+  <ThemeProvider><Generator /></ThemeProvider>
 );
 

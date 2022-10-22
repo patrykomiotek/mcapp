@@ -12,6 +12,7 @@ import { Viewport } from '@components/Viewport';
 import { AuthInfo } from '@components/Auth';
 import { AuthContext } from '@components/Auth';
 import { AuthProvider } from '@components/Auth';
+import { ThemeProvider } from '@components/Theme';
 
 const App = () => {
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -36,21 +37,23 @@ const App = () => {
 
   return (
     <AuthProvider>
-      <div className="App">
-        {/* <Text>Today is payday</Text> */}
-        {/* <Generator /> */}
-        {/* <LoginForm /> */}
-        {/* <LoginPage /> */}
-        {/* <Viewport /> */}
-        {/* <MagicButton
-          ref={buttonRef}
-          onMouseEnter={handleMouseEnter}
-        >
-          Click me, please!
-        </MagicButton> */}
-        <AuthInfo />
-        {/* <button onClick={() => setIsLoggedIn((value) => !value)}>Toggle</button> */}
-      </div>
+      <ThemeProvider>
+        <div className="App">
+          {/* <Text>Today is payday</Text> */}
+          <Generator />
+          {/* <LoginForm /> */}
+          {/* <LoginPage /> */}
+          {/* <Viewport /> */}
+          {/* <MagicButton
+            ref={buttonRef}
+            onMouseEnter={handleMouseEnter}
+          >
+            Click me, please!
+          </MagicButton> */}
+          <AuthInfo />
+          {/* <button onClick={() => setIsLoggedIn((value) => !value)}>Toggle</button> */}
+        </div>
+      </ThemeProvider>
     </AuthProvider>
   );
 }

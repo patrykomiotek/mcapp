@@ -5,6 +5,7 @@ type Auth = {
   logIn: () => void,
   logOut: () => void,
   toggle: () => void,
+  // setIsLoggedIn: Dispatch<SetStateAction<boolean>>
 }
 
 // const defaultValues: Auth = {
