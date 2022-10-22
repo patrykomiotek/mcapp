@@ -38,7 +38,7 @@ const Products = () => {
       <h2>Products</h2>
       {products && products.map((elem) => (
         <div key={elem.id}>
-          <p>{elem.fields.name}</p>
+          <p>{elem.fields.name}, {elem.fields.price}</p>
         </div>
       ))}
     </div>
