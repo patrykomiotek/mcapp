@@ -11,10 +11,12 @@ import { MagicButton } from './ui';
 import { Viewport } from '@components/Viewport';
 import { AuthInfo } from '@components/Auth';
 import { AuthContext } from '@components/Auth';
+import { AuthProvider } from '@components/Auth';
 
 const App = () => {
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const { isLoggedIn } = useAuth();
 
   useEffect(() => {
     const button = buttonRef.current
@@ -33,7 +35,7 @@ const App = () => {
   }
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn: isLoggedIn }}>
+    <AuthProvider>
       <div className="App">
         {/* <Text>Today is payday</Text> */}
         {/* <Generator /> */}
@@ -47,9 +49,9 @@ const App = () => {
           Click me, please!
         </MagicButton> */}
         <AuthInfo />
-        <button onClick={() => setIsLoggedIn((value) => !value)}>Toggle</button>
+        {/* <button onClick={() => setIsLoggedIn((value) => !value)}>Toggle</button> */}
       </div>
-    </AuthContext.Provider>
+    </AuthProvider>
   );
 }
 

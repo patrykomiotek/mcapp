@@ -7,7 +7,7 @@ const AuthCredentials = () => {
 
   return (
     <div>
-      <p>Is logged in: {context.isLoggedIn ? 'Yes' : 'No'}</p>
+      <p>Is logged in: {context?.isLoggedIn ? 'Yes' : 'No'}</p>
     </div>
   );
 }
