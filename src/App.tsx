@@ -49,7 +49,7 @@ const App = () => {
             <div className="App">
               {/* <Text>Today is payday</Text> */}
 
-              <Generator />
+              {/* <Generator /> */}
               {/* <LoginForm /> */}
               {/* <LoginPage /> */}
               {/* <Viewport /> */}
@@ -59,17 +59,17 @@ const App = () => {
               >
                 Click me, please!
               </MagicButton> */}
-              {/* <AuthInfo /> */}
+              <AuthInfo />
               {/* <button onClick={() => setIsLoggedIn((value) => !value)}>Toggle</button> */}
 
-              <ErrorBoundary fallbackComponent={<p>Product error!!!</p>}>
+              {/* <ErrorBoundary fallbackComponent={<p>Product error!!!</p>}>
                 <Clicker />
                 <Product />
               </ErrorBoundary>
 
               <ErrorBoundary fallbackComponent={<p>Error!!!</p>}>
                 <BuggyComponent />
-              </ErrorBoundary>
+              </ErrorBoundary> */}
             </div>
           <ReactQueryDevtools initialIsOpen={true} />
         </QueryClientProvider>

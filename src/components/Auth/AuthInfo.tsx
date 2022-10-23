@@ -11,7 +11,7 @@ const AuthInfo = () => {
   // const context = useContext(AuthContext);
   // const context = useAuthContext();
 
-  console.log('AuthInfo component');
+  console.log('render: AuthInfo component');
 
   return (
     <div>
