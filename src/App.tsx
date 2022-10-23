@@ -6,8 +6,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import { Text } from './ui';
 import { Generator } from './components';
-// import { LoginFormControlled } from './components';
-import { LoginForm } from './components';
+// import { LoginFormControlled } from './components';;
 import { LoginPage } from './pages';
 import { MagicButton } from './ui';
 import { Viewport } from '@components/Viewport';
@@ -49,6 +48,7 @@ const App = () => {
         <QueryClientProvider client={queryClient}>
             <div className="App">
               {/* <Text>Today is payday</Text> */}
+
               <Generator />
               {/* <LoginForm /> */}
               {/* <LoginPage /> */}
