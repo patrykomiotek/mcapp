@@ -24,9 +24,9 @@ module.exports = {
         "@stories(.*)$": "<rootDir>/src/stories$1",
         "@apptypes(.*)$": "<rootDir>/src/types$1",
         "@utils(.*)$": "<rootDir>/src/utils$1",
-        "@atoms(.*)$": "<rootDir>/src/atoms$1",
-        "@molecules(.*)$": "<rootDir>/src/molecules$1",
-        "@organisms(.*)$": "<rootDir>/src/organisms$1",
+        "@atoms(.*)$": "<rootDir>/src/ui/atoms$1",
+        "@molecules(.*)$": "<rootDir>/src/ui/molecules$1",
+        "@organisms(.*)$": "<rootDir>/src/ui/organisms$1",
       }
     }
   }
