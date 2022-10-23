@@ -17,6 +17,8 @@ import { AuthProvider } from '@components/Auth';
 import { ThemeProvider } from '@components/Theme';
 import { Products } from '@components/Products';
 import { Product } from '@components/Products';
+import { Clicker } from '@components/Clicker';
+import { ErrorBoundary, BuggyComponent } from '@components/ErrorBoundary';
 
 const queryClient = new QueryClient();
 
@@ -45,23 +47,28 @@ const App = () => {
     <AuthProvider>
       <ThemeProvider>
         <QueryClientProvider client={queryClient}>
-          <div className="App">
-            {/* <Text>Today is payday</Text> */}
-            {/* <Generator /> */}
-            {/* <LoginForm /> */}
-            {/* <LoginPage /> */}
-            {/* <Viewport /> */}
-            {/* <MagicButton
-              ref={buttonRef}
-              onMouseEnter={handleMouseEnter}
-            >
-              Click me, please!
-            </MagicButton> */}
-            {/* <AuthInfo /> */}
-            {/* <button onClick={() => setIsLoggedIn((value) => !value)}>Toggle</button> */}
+            <div className="App">
+              {/* <Text>Today is payday</Text> */}
+              {/* <Generator /> */}
+              {/* <LoginForm /> */}
+              {/* <LoginPage /> */}
+              {/* <Viewport /> */}
+              {/* <MagicButton
+                ref={buttonRef}
+                onMouseEnter={handleMouseEnter}
+              >
+                Click me, please!
+              </MagicButton> */}
+              {/* <AuthInfo /> */}
+              {/* <button onClick={() => setIsLoggedIn((value) => !value)}>Toggle</button> */}
 
-            <Product />
-          </div>
+              <Clicker />
+              <Product />
+
+              <ErrorBoundary fallbackComponent={<p>Error!!!</p>}>
+                <BuggyComponent />
+              </ErrorBoundary>
+            </div>
           <ReactQueryDevtools initialIsOpen={true} />
         </QueryClientProvider>
       </ThemeProvider>
