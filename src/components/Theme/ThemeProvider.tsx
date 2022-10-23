@@ -26,7 +26,7 @@ type Props = {
   children: React.ReactNode
 }
 
-const useTheme = () => {
+export const useTheme = () => {
   const [theme, setTheme] = useState<Theme>(Theme.LIGHT);
 
   const toggle = () => {
