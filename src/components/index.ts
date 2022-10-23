@@ -5,3 +5,4 @@ export * from './Counter';
 export * from './Auth';
 export * from './Theme';
 export * from './Products';
+export * from './Clicker';
