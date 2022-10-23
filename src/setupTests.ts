@@ -2,27 +2,28 @@
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
-// import '@testing-library/jest-dom';
-import '@testing-library/jest-dom/extend-expect';
-import { server } from './mocks/server';
+import '@testing-library/jest-dom';
 
-/**
- * beforeAll, afterEach and afterAll can be moved to separate test suite to manipulate responses
- */
-beforeAll(() => {
-  // Enable the mocking in tests.
-  server.listen({
-    onUnhandledRequest: 'error',
-  });
-})
+// import '@testing-library/jest-dom/extend-expect';
+// import { server } from './mocks/server';
 
-afterEach(() => {
-  // Reset any runtime handlers tests may use.
-  server.resetHandlers();
-})
+// /**
+//  * beforeAll, afterEach and afterAll can be moved to separate test suite to manipulate responses
+//  */
+// beforeAll(() => {
+//   // Enable the mocking in tests.
+//   server.listen({
+//     onUnhandledRequest: 'error',
+//   });
+// })
 
-afterAll(() => {
-  // Clean up once the tests are done.
-  server.close();
-})
+// afterEach(() => {
+//   // Reset any runtime handlers tests may use.
+//   server.resetHandlers();
+// })
+
+// afterAll(() => {
+//   // Clean up once the tests are done.
+//   server.close();
+// })
 
