@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 // Start the mocking conditionally.
-if (process.env.REACT_APP_ENABLE_MOCKS) {
+if (parseInt(process.env.REACT_APP_ENABLE_MOCKS, 10)) {
   const { worker } = require('./mocks/browser');
   worker.start();
 }
