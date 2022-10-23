@@ -1,6 +1,6 @@
 import { rest } from 'msw'
 
-import { BASE_URL } from '@services/products';
+import { BASE_URL } from '@services/config';
 import { Product } from '@apptypes/Product';
 
 interface Body {

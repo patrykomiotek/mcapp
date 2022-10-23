@@ -11,9 +11,9 @@ const Product = () => {
 
   const product = response?.data;
 
-  const handleUpdatePrice: MouseEventHandler<HTMLButtonElement> = () => {
-    updatePriceByOne('recOeguiOUiOyViJs');
-    refetch();
+  const handleUpdatePrice: MouseEventHandler<HTMLButtonElement> = async () => {
+    await updatePriceByOne('recOeguiOUiOyViJs');
+    await refetch();
   }
 
   if (isLoading) {

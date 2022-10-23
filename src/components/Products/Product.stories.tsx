@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { rest } from 'msw';
 
 import { Product } from './Product';
-import { BASE_URL } from '@services/products';
+import { BASE_URL } from '@services/config';
 import { Product as IProduct } from '@apptypes/Product';
 
 export default {

@@ -1,22 +1,20 @@
-import axios from 'axios';
-
+import { api } from './config';
 import { Product } from '@apptypes/Product';
 
 interface ProductsResponse {
   records: Product[]
 }
 
-export const BASE_URL = 'https://api.airtable.com/v0/appdpf7By5zmgmYOI';
-
-const api = axios.create({
-  baseURL: BASE_URL,
-  headers: {
-    Authorization: `Bearer ${process.env.REACT_APP_API_TOKEN}`,
-  }
-});
-
 export const fetchProducts = () => {
   return api.get<ProductsResponse>('/products');
+  // return fetch('https://api.airtable.com/v0/appdpf7By5zmgmYOI', {
+  //   headers: {
+  //     Authorization: 'Bearer ....'
+  //   }
+  // })
+  // .then(response => response.json())
+  // .then(data => console.log(data.fdgjkgdhhgdhfghkdfhgkhdfkjgh))
+
 }
 
 export const fetchProduct = (id: Product['id']) => {
