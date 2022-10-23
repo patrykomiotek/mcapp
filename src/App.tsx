@@ -62,8 +62,10 @@ const App = () => {
               {/* <AuthInfo /> */}
               {/* <button onClick={() => setIsLoggedIn((value) => !value)}>Toggle</button> */}
 
-              <Clicker />
-              <Product />
+              <ErrorBoundary fallbackComponent={<p>Product error!!!</p>}>
+                <Clicker />
+                <Product />
+              </ErrorBoundary>
 
               <ErrorBoundary fallbackComponent={<p>Error!!!</p>}>
                 <BuggyComponent />
