@@ -15,6 +15,7 @@ const Products = () => {
       console.log(response);
       setProducts(response.data.records);
     } catch (_e) {
+      console.log('Error: ', _e);
       setIsError(true);
     } finally {
       setIsLoading(false);
