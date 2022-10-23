@@ -49,7 +49,7 @@ const App = () => {
         <QueryClientProvider client={queryClient}>
             <div className="App">
               {/* <Text>Today is payday</Text> */}
-              {/* <Generator /> */}
+              <Generator />
               {/* <LoginForm /> */}
               {/* <LoginPage /> */}
               {/* <Viewport /> */}

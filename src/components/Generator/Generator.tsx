@@ -19,7 +19,7 @@ const Generator = () => {
 
   return (
     <div className={context.theme}>
-      <Text>{id}</Text>
+      <Text dataTestid="uid-text">{id}</Text>
       {/* <h2 onClick={handleClick}>Generate new id</h2> */}
       <button onClick={handleClick}>Generate</button>
       <ThemeSwitcher />

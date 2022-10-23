@@ -1,12 +1,14 @@
 type Props = {
+  // readonly 'data-testid'?: string;
+  readonly dataTestid?: string;
   readonly children: string;
 }
 
-const Text = ({ children }: Props) => {
+const Text = ({ children, dataTestid }: Props) => {
 // const Text = (props: Props) => {
   // const { children } = props;
   return (
-    <p>{children}</p>
+    <p data-testid={dataTestid}>{children}</p>
   );
 }
 
