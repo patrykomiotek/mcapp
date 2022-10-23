@@ -17,6 +17,7 @@ const LoginForm = ({ data, onSubmit }: Props) => {
   const languageFieldRef = useRef<HTMLInputElement>(null);
 
   const [showConfetti, setShowConfetti] = useState(false);
+  const [isSent, setIsSent] = useState(false);
 
   useEffect(() => {
     if (emailFieldRef.current) {
@@ -33,12 +34,23 @@ const LoginForm = ({ data, onSubmit }: Props) => {
 
     console.log(email, password, language);
     setShowConfetti(true);
+    setIsSent(true);
 
     onSubmit({email, password, language});
   }
 
-  return (
-    <div>
+  const renderInfo = () => {
+    const email = emailFieldRef.current?.value || '';
+
+    if (email.includes('@')) {
+      return <div>Success!</div>
+    }
+
+    return <div>Email is invalid</div>;
+  }
+
+  const renderForm = () => {
+    return (
       <form onSubmit={handleSubmit}>
         <div>
           {/* <p>E-mail: {emailFieldRef.current?.value} password: {passwordFieldRef.current?.value} language: {languageFieldRef.current?.value}</p> */}
@@ -63,8 +75,10 @@ const LoginForm = ({ data, onSubmit }: Props) => {
           <input type="submit" value="Send" />
         </div>
       </form>
-    </div>
-  );
+    );
+  }
+
+  return isSent ? renderInfo() : renderForm();
 }
 
 export { LoginForm };
