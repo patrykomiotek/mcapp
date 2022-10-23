@@ -12,7 +12,7 @@
 //   isLoading: false,
 //   error: Error
 // }
-import { useReducer } from 'react';
+import { KeyboardEventHandler, useReducer, useRef } from 'react';
 
 type State = {
   count: number;
@@ -21,6 +21,7 @@ type State = {
 enum ActionType {
   INCREASE = 'increase',
   DECREASE = 'decrease',
+  SET = 'set',
 }
 
 type Action = {
@@ -29,7 +30,10 @@ type Action = {
 } | {
   type: ActionType.DECREASE,
   payload: number,
-}
+} | {
+  type: ActionType.SET,
+  payload: number,
+};
 
 const initialState: State = {
   count: 0,
@@ -41,6 +45,8 @@ const reducer = (state: State, { type, payload }: Action) => {
       return { count: state.count + payload };
     case ActionType.DECREASE:
       return { count: state.count - payload };
+    case ActionType.SET:
+        return { count: payload };
     default:
       return state;
   }
@@ -48,10 +54,18 @@ const reducer = (state: State, { type, payload }: Action) => {
 
 const Clicker = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const fieldRef = useRef<HTMLInputElement>(null);
+
+  const handleOnKeyDown: KeyboardEventHandler<HTMLInputElement> = (event) => {
+    if (event.code === 'Enter' && fieldRef.current) {
+      dispatch({ type: ActionType.SET, payload: parseInt(fieldRef.current.value, 10) });
+    }
+  }
 
   return (
     <div>
       <p>Counter value: {state.count}</p>
+      <input ref={fieldRef} type="number" onKeyDown={handleOnKeyDown} />
       <button onClick={() => dispatch({ type: ActionType.DECREASE, payload: 1 })}>-</button>
       <button onClick={() => dispatch({ type: ActionType.INCREASE, payload: 1 })}>+</button>
     </div>
